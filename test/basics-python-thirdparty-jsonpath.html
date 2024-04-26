@@ -1,0 +1,148 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2024-04-26T23:22:12.4973397"><title>jsonpath | 软件测试知识总结</title><script type="application/json" id="virtual-toc-data">[{"id":"导入","level":0,"title":"导入","anchor":"#导入"},{"id":"i2ux4ti_24","level":0,"title":"使用案例","anchor":"#i2ux4ti_24"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="frontend/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/tom001.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="jsonpath | 软件测试知识总结"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="软件测试知识总结 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/test/basics-python-thirdparty-jsonpath.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="jsonpath | 软件测试知识总结"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/test/basics-python-thirdparty-jsonpath.html#webpage",
+    "url": "writerside-documentation/test/basics-python-thirdparty-jsonpath.html",
+    "name": "jsonpath | 软件测试知识总结",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/test/#website",
+    "url": "writerside-documentation/test/",
+    "name": "软件测试知识总结 Help"
+}</script><!-- End Schema.org --></head><body data-id="basics-python-thirdparty-jsonpath" data-main-title="jsonpath" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="basics.md|基本测试技能///basics-python.md|Python///basics-python-thirdparty.md|三方库"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>软件测试知识总结  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="basics-python-thirdparty-jsonpath" id="basics-python-thirdparty-jsonpath.md">jsonpath</h1><p id="i2ux4ti_20">jsonpath</p><div class="code-block" data-lang="plaintext">
+/**
+ * @Author       : gainovel
+ * @Organization : Copyright © 2024 gainovel.com All Rights Reserved.
+ * @Date         : 2024-04-25 18:23:13 星期四
+ * @ProductName  : Writerside
+ * @PrjectName   : test
+ * @File         : ${DIR_PATH}/${FILE_NAME}
+ * @Description  : ...
+ **/
+</div><section class="chapter"><h2 id="导入" data-toc="导入">导入</h2><div class="code-block" data-lang="python">
+from jsonpath import jsonpath
+</div></section><section class="chapter"><h2 id="i2ux4ti_24" data-toc="i2ux4ti_24">使用案例</h2><aside class="prompt" data-type="note" data-title="" id="i2ux4ti_25"><p id="i2ux4ti_26">jsonpath在线验证平台<a href="https://www.jsonpath.cn/" id="i2ux4ti_27" data-external="true" rel="noopener noreferrer">https://www.jsonpath.cn/</a></p></aside><div class="table-wrapper"><table class="wide" id="i2ux4ti_28"><thead><tr class="ijRowHead" id="i2ux4ti_29"><th id="i2ux4ti_30"><p>jsonpath</p></th><th id="i2ux4ti_31"><p>描述</p></th></tr></thead><tbody><tr id="i2ux4ti_32"><td id="i2ux4ti_33"><p>.</p></td><td id="i2ux4ti_34"><p>选择直接子节点</p></td></tr><tr id="i2ux4ti_35"><td id="i2ux4ti_36"><p>..</p></td><td id="i2ux4ti_37"><p>选择子孙节点（不考虑层级）</p></td></tr><tr id="i2ux4ti_38"><td id="i2ux4ti_39"><p>[]</p></td><td id="i2ux4ti_40"><p>选择子节点/选择数组索引</p></td></tr><tr id="i2ux4ti_41"><td id="i2ux4ti_42"><p>[,]</p></td><td id="i2ux4ti_43"><p>选择多个字段</p></td></tr><tr id="i2ux4ti_44"><td id="i2ux4ti_45"><p>@</p></td><td id="i2ux4ti_46"><p>代表当前选择的节点（和条件过滤一起使用）</p></td></tr><tr id="i2ux4ti_47"><td id="i2ux4ti_48"><p>[?(@.name=&quot;xxx&quot;)]</p></td><td id="i2ux4ti_49"><p>通过条件过滤数据</p></td></tr></tbody></table></div><p id="i2ux4ti_50"><span id="i2ux4ti_51"><b><font style="color:#e9488b">准备数据</font></b></span></p><div class="code-block" data-lang="python">
+def xfz():
+    url = &quot;https://www.xfz.cn/api/website/home/stream/&quot;
+    response = requests.get(url)
+    print(response.json())
+
+
+def xfz_stream():
+    resJson = {'code': 200, 'data': {'advertises': [{'url': 'https://www.xfz.cn/course/series/16.html?adf=right.course',
+                                                     'photo': 'https://static-image.xfz.cn/1554346383_8.png',
+                                                     'classify': 0}], 'actives': [
+        {'active_time': '暂定11月', 'fee': 138000,
+         'photo': 'https://static-fancube.xfz.cn/1645523865311/微信图片_20220221161204.jpg', 'uid': 129,
+         'title': '小饭桌创新成长营二期', 'timeline': '', 'number': 1,
+         'apply_url': 'https://www.xfz.cn/form/growth?acid=Skuxt1msdb&amp;intro=show',
+         'small_title': '解决企业经营和资本问题的CEO课程',
+         'intro': '8年来我们持续专注在CEO个人和企业成长上面的学习，今年创业营二期以“企业经营发展”和“创始人个人成长”双维度的课程体系。',
+         'location': '北京',
+         'show_list': '8年来我们持续专注在CEO个人和企业成长上面的学习，今年创业营二期以“企业经营发展”和“创始人个人成长”双维度的课程体系。',
+         'begin_time': '2022-05-19 19:00:00', 'go_apply': True,
+         'type': {'uid': 9, 'name': '小饭桌创新成长学院', 'icon': 'https://static-image.xfz.cn/1621308971_458.jpg'},
+         'people_total': 40},
+        {'active_time': '4月12日', 'fee': 0, 'photo': 'https://static-fancube.xfz.cn/1648620682982/主视觉.jpg',
+         'uid': 130, 'title': '小饭桌科技创业课堂·系列课', 'timeline': '', 'number': 87,
+         'apply_url': 'https://www.xfz.cn/form/class?acid=52BQD493n1&amp;intro=show',
+         'small_title': '小饭桌科技创业课堂·股权激励专场',
+         'intro': '小饭桌科技创业课堂是聚焦科技领域创业公司的创新商业课程。从资本趋势、行业政策、商业化场景、组织搭建等维度，为科技创业者提供全面的商业经验分享，致力于打造高质量的科技领域CEO交流社群。\n\n本期【科技创业课堂】股权激励专场，我们聚焦在：科技公司如何做好股权激励？\n4月12日 19:00-20:30（腾讯会议直播）将邀请到【易参创始人 黄怡然 】，和科技创业者们一同探讨和解答。\n\n【特别说明】\n  1.请您认真填写报名信息，我们会在报名信息中收录优质问题，在直播当天进行答疑，另外我们会根据项目信息匹配融资顾问，请大家认真填写报名信息~\n\n  2.报名成功后，请您根据页面引导扫码加入科技创业者交流群（审核制）。',
+         'location': '北京',
+         'show_list': '小饭桌科技创业课堂是聚焦科技领域创业公司的创新商业课程。从资本趋势、行业政策、商业化场景、组织搭建等维度，为科技创业者提供全面的商业经验分享，致力于打造高质量的科技领域CEO交流社群。\n\n本期【科技创业课堂】股权激励专场，我们聚焦在：科技公司如何做好股权激励？\n4月12日 19:00-20:30（腾讯会议直播）将邀请到【易参创始人 黄怡然 】，和科技创业者们一同探讨和解答。\n\n【特别说明】\n  1.请您认真填写报名信息，我们会在报名信息中收录优质问题，在直播当天进行答疑，另外我们会根据项目信息匹配融资顾问，请大家认真填写报名信息~\n\n  2.报名成功后，请您根据页面引导扫码加入科技创业者交流群（审核制）。',
+         'begin_time': '2022-04-12 19:00:00', 'go_apply': True,
+         'type': {'uid': 1, 'name': '创业课堂', 'icon': 'https://static-image.xfz.cn/1453282591_943.png'},
+         'people_total': 500}, {'active_time': '8月6日', 'fee': 86000,
+                                'photo': 'https://static-fancube.xfz.cn/1621491375995/麦芒消费成长营报名链接banner.jpg',
+                                'uid': 128, 'title': '点亮消费营', 'timeline': '', 'number': 1,
+                                'apply_url': 'https://www.xfz.cn/form/growth?acid=k1H5OqBLnK&amp;intro=show',
+                                'small_title': '点亮消费营是由小饭桌联合KKR重磅推出，面向消费领域全产业链打造的顶尖CEO成长营。',
+                                'intro': '点亮消费营是由小饭桌重磅推出，面向消费领域全产业链打造的顶尖CEO成长营。',
+                                'location': '北京',
+                                'show_list': '点亮消费营是由小饭桌重磅推出，面向消费领域全产业链打造的顶尖CEO成长营。',
+                                'begin_time': '2021-07-15 00:00:00', 'go_apply': True,
+                                'type': {'uid': 9, 'name': '小饭桌创新成长学院',
+                                         'icon': 'https://static-image.xfz.cn/1621308971_458.jpg'},
+                                'people_total': 25}], 'article_hot': [
+        {'uid': 10907, 'title': '牛投邦NewBanker完成C+轮融资，金浦投资旗下上海金融科技基金和湖南湘江国投联合投资',
+         'photo': 'https://static-image.xfz.cn/1713521069_957.jpg',
+         'author': {'photo': 'https://static-image.xfz.cn/1552965456_492.jpg',
+                    'authors': [{'author_id': 500, 'name': '饭桌君'}]}, 'is_original': False,
+         'article_type': '融资消息',
+         'intro': '一站式财富管理数字化（WealthTech）解决方案服务商牛投邦NewBanker宣布完成来自金浦投资旗下上海金融科技基金和湖南湘江国投的数千万元人民币C+轮投资。',
+         'source': '', 'time': '2024-04-19 18:04:29', 'keywords': ['融资']},
+        {'uid': 10908, 'title': '“普通团队补贴100万，院士团队高出20倍”',
+         'photo': 'https://static-image.xfz.cn/1713767973_515.jpg',
+         'author': {'photo': 'https://static-image.xfz.cn/1693983153_169.jpg',
+                    'authors': [{'author_id': 2301, 'name': '贾紫璇'}]}, 'is_original': True, 'article_type': '热点',
+         'intro': '科创时代下，院士经济效应越发显著，院士科创项目成了招商人、投资人、创始人的心头好！', 'source': '',
+         'time': '2024-04-22 14:39:34', 'keywords': ['院士', '科创', '投资']}], 'tag_hot': ['投资', '科创', '院士'],
+                                     'authors': [{'name': '王露', 'work': '记者', 'article_count': 12,
+                                                  'intro': '硬科技，从资本角度看产业',
+                                                  'avatar': 'https://static-image.xfz.cn/1693983110_341.jpg',
+                                                  'author_id': 2303},
+                                                 {'name': '王满华', 'work': '记者', 'article_count': 31,
+                                                  'intro': '关注新能源、硬科技及资本动向',
+                                                  'avatar': 'https://static-image.xfz.cn/1693968678_835.jpg',
+                                                  'author_id': 2304},
+                                                 {'name': '贾紫璇', 'work': '记者', 'article_count': 39,
+                                                  'intro': '硬科技、新能源',
+                                                  'avatar': 'https://static-image.xfz.cn/1693983153_169.jpg',
+                                                  'author_id': 2301},
+                                                 {'name': '黄泽正', 'work': '记者', 'article_count': 40,
+                                                  'intro': '人工智能、硬科技、VR&amp;AR',
+                                                  'avatar': 'https://static-image.xfz.cn/1693983197_842.jpg',
+                                                  'author_id': 2295}], 'newsletter': [
+            {'category': '', 'publish_time': '2024-04-25 18:13:03',
+             'title': '塔塔咨询服务公司CEO：人工智能将导致呼叫中心的需求“最小化”',
+             'share_url': 'https://www.xfz.cn/news-flash/228587.html',
+             'source_url': 'https://www.cls.cn/detail/1658581', 'source': '财联社',
+             'summary': '印度塔塔咨询服务公司首席执行官K Krithivasan表示，人工智能将在一年内导致呼叫中心的需求“最小化”，随着人工智能的快速进步，这将颠覆亚洲及其他地区的一个庞大产业。K Krithivasan称，尽管到目前为止“我们还没有看到任何裁员”，但跨国客户更广泛地采用生成式人工智能，将彻底改变在印度和菲律宾等国创造大量就业的客户帮助中心。',
+             'id': 228587},
+            {'category': '', 'publish_time': '2024-04-25 18:13:03', 'title': '招商银行获北向资金净买入6.62亿元',
+             'share_url': 'https://www.xfz.cn/news-flash/228584.html',
+             'source_url': 'https://www.yicai.com/brief/102084529.html', 'source': '第一财经',
+             'summary': '北向资金今日净买入3.49亿元。招商银行、立讯精密、宁德时代分别获净买入6.62亿元、4.41亿元、2.73亿元。美的集团净卖出额居首，金额为2.89亿元。',
+             'id': 228584}, {'category': '', 'publish_time': '2024-04-25 17:13:03',
+                             'title': '卓创资讯：预计5月肉鸡养殖情况或仍难有显著盈利',
+                             'share_url': 'https://www.xfz.cn/news-flash/228577.html',
+                             'source_url': 'https://www.stcn.com/article/detail/1188370.html', 'source': '证券时报',
+                             'summary': '据卓创资讯，3—4月出栏肉鸡养殖成本虽下滑，但毛鸡价格整体低位运行，3—4月肉鸡养殖环节整体处于亏损状态，亏损时长近2个月。5月肉鸡养殖成本降幅空间较为有限，毛鸡价格或延续偏弱运行走势，成本及养殖收入双面影响下，预计5月肉鸡养殖情况或仍难有显著盈利。',
+                             'id': 228577}, {'category': '', 'publish_time': '2024-04-25 16:13:03',
+                                             'title': '首款车型计划四季度推出，极氪全球首发浩瀚-M架构',
+                                             'share_url': 'https://www.xfz.cn/news-flash/228563.html',
+                                             'source_url': 'https://www.cls.cn/detail/1658210', 'source': '财联社',
+                                             'summary': '在2024年北京车展上极氪汽车全球首发浩瀚-M架构，该架构颠覆了目前电动汽车的空间形态，座舱空间利用率超过80%，首款车型计划今年四季度推出。',
+                                             'id': 228563}, {'category': '', 'publish_time': '2024-04-25 16:13:02',
+                                                             'title': '市场人士：央行下场在二级市场购买国债短期不会成为常规的流动性管理手段',
+                                                             'share_url': 'https://www.xfz.cn/news-flash/228560.html',
+                                                             'source_url': 'https://qzswap.stcn.com/wap_newsDetail.html?id=364638&amp;type=reported_info',
+                                                             'source': '券商中国',
+                                                             'summary': '近期，财政部公开发文表态支持央行下场购买国债，而央行相关负责人在接受《金融时报》采访时也提出，央行在二级市场开展国债买卖，可以作为一种流动性管理方式和货币政策工具储备。多位市场人士表示，央行如果下场在二级市场购买国债，可能更多是基于配合特别国债发行的考虑，短期不会成为常规的流动性管理手段。同时，央行即便下场购买国债，只要规模适度，与经济增速和目标物价水平基本匹配，都属于正常的货币政策操作，无需贴上“量化宽松”和“财政赤字货币化”的标签。',
+                                                             'id': 228560},
+            {'category': '', 'publish_time': '2024-04-25 16:13:02',
+             'title': '旭辉24个项目获得“白名单”融资支持，权益后贷款展期及置换金额超55亿元',
+             'share_url': 'https://www.xfz.cn/news-flash/228559.html',
+             'source_url': 'https://www.cls.cn/detail/1658255', 'source': '财联社',
+             'summary': '一份旭辉内部文件显示，旭辉今年一季度“白名单”项目完成24个，权益后展期金额50.6亿元，权益后融资置换金额5.08亿元，权益后年化可节省利息1.2亿元。此前，旭辉披露已有19个项目落地“白名单”，通过调整还款节点、降低利息、置换现有融资及新增融资等方式，从多家国有及股份制银行获得融资支持。其中，芜湖鎏金印象为首个获批新增融资的项目，获批金额1.5亿元，并将根据建设进度进行放款。',
+             'id': 228559},
+            {'category': '', 'publish_time': '2024-04-25 16:13:02', 'title': '上海启动100亿科创接力基金',
+             'share_url': 'https://www.xfz.cn/news-flash/228558.html',
+             'source_url': 'https://www.yicai.com/brief/102084289.html', 'source': '第一财经',
+             'summary': '从上海国际集团获悉，上海启动100亿科创接力基金。上海国际集团此前牵头发起设立了规模15亿元的S基金——上海科创接力一期创业投资合伙企业（有限合伙）。该基金已于近日正式完成终关。据上海国际集团介绍，未来将进一步加强对上海科创基金的战略支持，通过S基金产品的序列化发展，着力打造目标管理规模超100亿元的科创接力基金，并以此为纽带，带动多种类型资本参与投资接力，助力上海持续打造市场领先的S基金发展高地。',
+             'id': 228558}, {'category': '', 'publish_time': '2024-04-25 16:13:02',
+                             'title': '摩根士丹利警告：东京CPI数据或引发周五汇市的膝跳反应',
+                             'share_url': 'https://www.xfz.cn/news-flash/228556.html',
+                             'source_url': 'https://www.cls.cn/detail/1658318', 'source': '财联社',
+                             'summary': '摩根士丹利三菱日联证券的经济学家指出，东京的通胀数据可能导致周五上午的汇市出现“膝跳反应”；该数据将于周五上午发布，数据公布几个小时后日本央行才会做出政策决定。此前日元兑美元汇率隔夜盘中创下1990年以来首次跌破155日元，引发外界预期，东京将在未来几天干预市场。日本官员周四再次警告市场参与者，他们正在密切关注汇率走势。',
+                             'id': 228556}]}}
+    return resJson
+</div><p id="i2ux4ti_53"><span id="i2ux4ti_54"><b><font style="color:#e9488b">匹配验证：找到包含元素id且id==228558的字典</font></b></span></p><div class="code-block" data-lang="python">
+def jsonpath_test():
+    resJson = xfz_stream()
+    print(jsonpath(resJson, &quot;$..[?(@.id==228558)]&quot;))
+</div></section><div class="last-modified">Last modified: 26 四月 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="basics-python-thirdparty-requests.html" class="navigation-links__prev">requests</a><a href="basics-java.html" class="navigation-links__next">Java</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="frontend/app.js"></script></body></html>

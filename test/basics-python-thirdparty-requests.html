@@ -1,0 +1,64 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#E8488B"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="built-on" content="2024-04-26T23:22:12.4994303"><title>requests | 软件测试知识总结</title><script type="application/json" id="virtual-toc-data">[{"id":"导入","level":0,"title":"导入","anchor":"#导入"},{"id":"使用案例","level":0,"title":"使用案例","anchor":"#使用案例"},{"id":"Get方法获取首页","level":1,"title":"Get方法获取首页","anchor":"#Get方法获取首页"},{"id":"登录并获取列表","level":1,"title":"登录并获取列表","anchor":"#登录并获取列表"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="frontend/app.css" rel="stylesheet"><link rel="icon" type="image/svg" sizes="16x16" href="images/tom001.svg"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="requests | 软件测试知识总结"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="软件测试知识总结 Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/test/basics-python-thirdparty-requests.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="requests | 软件测试知识总结"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/test/basics-python-thirdparty-requests.html#webpage",
+    "url": "writerside-documentation/test/basics-python-thirdparty-requests.html",
+    "name": "requests | 软件测试知识总结",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/test/#website",
+    "url": "writerside-documentation/test/",
+    "name": "软件测试知识总结 Help"
+}</script><!-- End Schema.org --></head><body data-id="basics-python-thirdparty-requests" data-main-title="requests" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs="basics.md|基本测试技能///basics-python.md|Python///basics-python-thirdparty.md|三方库"><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>软件测试知识总结  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="basics-python-thirdparty-requests" id="basics-python-thirdparty-requests.md">requests</h1><p id="-bdhlxo_20">requests</p><div class="code-block" data-lang="plaintext">
+/**
+ * @Author       : gainovel
+ * @Organization : Copyright © 2024 gainovel.com All Rights Reserved.
+ * @Date         : 2024-04-25 16:34:49 星期四
+ * @ProductName  : Writerside
+ * @PrjectName   : test
+ * @File         : Writerside/topics/basics-python-thirdparty-requests.md
+ * @Description  : ...
+ **/
+</div><section class="chapter"><h2 id="导入" data-toc="导入">导入</h2><div class="code-block" data-lang="python">
+# 导入 requests 包
+import requests
+</div></section><section class="chapter"><h2 id="使用案例" data-toc="使用案例">使用案例</h2><section class="chapter"><h3 id="Get方法获取首页" data-toc="Get方法获取首页">Get方法获取首页</h3><p id="-bdhlxo_24"><span id="-bdhlxo_25"><b><font style="color:#e9488b">获取百度首页</font></b></span></p><div class="code-block" data-lang="python">
+def baidu():
+    # 发送请求
+    x = requests.get('https://www.baidu.com/')
+    # 返回网页内容
+    print(x.text)
+</div><p id="-bdhlxo_27"><span id="-bdhlxo_28"><b><font style="color:#e9488b">获取菜鸟教程首页</font></b></span></p><div class="code-block" data-lang="python">
+def runoob():
+    # 发送请求
+    x = requests.get('https://www.runoob.com/')
+    # 返回网页内容
+    print(x.text)
+</div></section><section class="chapter"><h3 id="登录并获取列表" data-toc="登录并获取列表">登录并获取列表</h3><div class="code-block" data-lang="python">
+def login_ketangpai():
+    &quot;&quot;&quot;
+    登录课堂派官网并获取课程列表
+    &quot;&quot;&quot;
+    
+    # 保证使用同一个session
+    s = get_global_session()
+
+    # 登录课堂派
+    url = &quot;https://openapiv5.ketangpai.com//UserApi/login&quot;
+    params = {
+        &quot;email&quot;: &quot;xxx@qq.com&quot;,
+        &quot;password&quot;: &quot;xxx&quot;,
+        &quot;remember&quot;: 0
+    }
+    response = s.post(url, params)
+    print(response.json())
+
+    # 获取课程列表
+    url = &quot;https://openapiv5.ketangpai.com//CourseApi/lists&quot;
+    response = s.get(url)
+    print(response.json())
+</div></section></section><div class="last-modified">Last modified: 26 四月 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="basics-python-thirdparty.html" class="navigation-links__prev">三方库</a><a href="basics-python-thirdparty-jsonpath.html" class="navigation-links__next">jsonpath</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="frontend/app.js"></script></body></html>
